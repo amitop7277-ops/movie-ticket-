@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>MOVIE E-TICKET</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoviePass -  Ticket</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ padding:25px 12px;
+ background:#101018;
+ font-family:Arial,sans-serif;
+ color:white;
+}
+
+.container{
+ max-width:430px;
+ margin:auto;
+}
+
+.brand{
+ font-size:24px;
+ font-weight:900;
+ margin-bottom:18px;
+}
+
+.brand span{color:#f84464}
+
+.{
+ float:right;
+ font-size:10px;
+ color:#ff9baa;
+ border:1px solid #ff8295;
+ padding:7px;
+ border-radius:20px;
+}
+
+.ticket {
+ background:white;
+ color:#191923;
+ border-radius:18px;
+ overflow:hidden;
+ box-shadow:0 15px 45px #0008;
+}
+
+.header{
+ background:linear-gradient(120deg,#241d35,#713047);
+ color:white;
+ padding:25px;
+}
+
+.label{
+ font-size:10px;
+ letter-spacing:2px;
+ color:#ffb6c4;
+ font-weight:bold;
+}
+
+.movie{
+ font-size:29px;
+ font-weight:900;
+ margin:12px 0;
+}
+
+.meta{
+ font-size:12px;
+ color:#eee;
+}
+
+.sticker{
+ display:inline-block;
+ background:white;
+ color:#222;
+ padding:7px 10px;
+ margin-top:14px;
+ border-radius:6px;
+ font-size:10px;
+ font-weight:900;
+}
+
+.sticker b{color:#f84464}
+
+.details{
+ padding:24px;
+}
+
+.cinema{
+ font-size:17px;
+ font-weight:900;
+}
+
+.address{
+ font-size:11px;
+ color:#888;
+ margin-top:5px;
+}
+
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:22px 12px;
+ margin-top:24px;
+}
+
+.heading{
+ color:#999;
+ font-size:9px;
+ font-weight:bold;
+ letter-spacing:1px;
+ margin-bottom:6px;
+}
+
+.value{
+ font-size:14px;
+ font-weight:bold;
+}
+
+.divider{
+ border-top:1px dashed #ccc;
+ margin:24px -24px;
+}
+
+.seats{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+}
+
+.seat{
+ background:#f1f1f5;
+ padding:9px 13px;
+ border-radius:6px;
+ font-size:12px;
+ font-weight:bold;
+}
+
+.qr-section{
+ background:#f8f8fa;
+ padding:22px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+ border-top:1px dashed #bbb;
+}
+
+.qr-text{
+ font-size:12px;
+ font-weight:bold;
+}
+
+.qr-text small{
+ display:block;
+ font-weight:normal;
+ color:#888;
+ line-height:1.5;
+ margin-top:8px;
+ max-width:165px;
+}
+
+.qr{
+ background:white;
+ padding:8px;
+ border:1px solid #ddd;
+ border-radius:8px;
+}
+
+#qrcode img{
+ width:108px;
+ height:108px;
+}
+
+.qr-caption{
+ text-align:center;
+ font-size:8px;
+ font-weight:bold;
+ margin-top:5px;
+}
+
+.warning{
+ padding:13px 20px;
+ color:#888;
+ font-size:9px;
+ line-height:1.5;
+ background:#fafafa;
+}
+
+button{
+ width:100%;
+ margin-top:18px;
+ padding:14px;
+ background:#f84464;
+ border:0;
+ color:white;
+ font-weight:bold;
+ border-radius:9px;
+ font-size:14px;
+}
+
+@media print{
+ body{background:white;padding:0}
+ .brand,.BMS,button{display:none}
+ .ticket{box-shadow:none}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="brand">
+movie<span>E-TICKET</span>
+<span class="demo">BMS</span>
+</div>
+
+<div class="ticket">
+
+<div class="header">
+ <div class="label">YOUR MOVIE NIGHT</div>
+ <div class="movie" id="movie">INTERSTELLAR</div>
+ <div class="meta">SCI-FI • ENGLISH • U/A • 2D</div>
+
+ <div class="sticker">
+  <b>BOOKMYSHOW-STYLE</b> • 
+ </div>
+</div>
+
+<div class="details">
+
+ <div class="heading">CINEMA</div>
+ <div class="cinema" id="cinema">
+  PVR  CINEMAS
+ </div>
+ <div class="address">
+  New Delhi, India •  Venue
+ </div>
+
+ <div class="grid">
+  <div>
+   <div class="heading">DATE</div>
+   <div class="value" id="date">08 NOV 2026</div>
+  </div>
+
+  <div>
+   <div class="heading">SHOW TIME</div>
+   <div class="value" id="time">07:30 PM</div>
+  </div>
+
+  <div>
+   <div class="heading">SCREEN</div>
+   <div class="value">SCREEN 04</div>
+  </div>
+
+  <div>
+   <div class="heading">TICKETS</div>
+   <div class="value">02 TICKETS</div>
+  </div>
+ </div>
+
+ <div class="divider"></div>
+
+ <div class="heading">SEAT NUMBERS</div>
+ <div class="seats">
+  <span class="seat">G-08</span>
+  <span class="seat">G-09</span>
+ </div>
+
+ <div class="grid">
+  <div>
+   <div class="heading">BOOKED BY</div>
+   <div class="value">PAGAL BHAI</div>
+  </div>
+
+  <div>
+   <div class="heading">BOOKING ID</div>
+   <div class="value">BMS7K4P2Q</div>
+  </div>
+ </div>
+
+</div>
+
+<div class="qr-section">
+
+ <div class="qr-text">
+   QR CODE
+  <small>
+   Sample booking information.
+   Not valid for cinema entry
+   or ticket verification.
+  </small>
+  <br>
+  TOTAL: ₹600.00
+ </div>
+
+ <div>
+  <div class="qr">
+   <div id="qrcode"></div>
+  </div>
+  <div class="qr-caption">ONLY</div>
+ </div>
+
+</div>
+
+<div class="warning">
+ DEMONSTRATION TEMPLATE ONLY.
+ Not an official BookMyShow ticket.
+ Not valid for entry, refunds or verification.
+</div>
+
+</div>
+
+<button onclick="window.print()">
+ PRINT / SAVE AS PDF
+</button>
+
+</div>
+
+<script>
+// SAMPLE TICKET DATA
+
+const booking = {
+ movie:"INTERSTELLAR",
+ cinema:"PVR SAMPLE CINEMAS",
+ date:"08 NOV 2026",
+ time:"07:30 PM",
+ bookingID:"BMS7K4P2Q",
+ seats:["G-08","G-09"]
+};
+
+// Generate QR code
+
+const qrData = JSON.stringify({
+ type:"E-TICKET",
+ ...booking
+});
+
+if(window.QRCode){
+ new QRCode(document.getElementById("qrcode"),{
+  text:qrData,
+  width:108,
+  height:108,
+  colorDark:"#171923",
+  colorLight:"#ffffff",
+  correctLevel:QRCode.CorrectLevel.H
+ });
+}else{
+ document.getElementById("qrcode").innerText=
+ "Internet required for QR";
+}
+</script>
+
+</body>
+</html>
